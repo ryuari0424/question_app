@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -29,10 +30,10 @@ class AnswerController extends Controller
             'answering1' => $request->answering1,
             'answering2' => $request->answering2,
             'answering3' => $request->answering3,
-            'user_id' => auth()->id(),
+            'user_id' => Auth::user()->id,
             'question_id' => $question->id
         ]);
 
-        return redirect()->route('user.index')->with('success', '質問に対する回答が投稿されました。');
+        return redirect()->route('user.index')->with('message', '質問に対する回答が投稿されました。');
     }
 }

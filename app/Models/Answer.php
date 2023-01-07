@@ -15,6 +15,8 @@ class Answer extends Model
         'answering1',
         'answering2',
         'answering3',
+        'user_id',
+        'question_id',
     ];
 
     public function question()

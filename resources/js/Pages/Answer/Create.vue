@@ -26,10 +26,12 @@
                 </div>
                 <!-- 回答フォーム1 -->
                 <div class="mt-6">
-                    <form @submit.prevent="form.post('')">
-                        <div class=" form-group mb-6">
+                <h2>あなたの回答を投稿してください。</h2>
+                <span>※3行以内で簡潔な回答をお願いします。</span>
+                    <form @submit.prevent="form.post(route('user.storeAnswer', props.question.id))">
+                        <div class="form-group mb-6">
                             <div class="my-3">
-                                <input type="text" v-model="form.answer1" class="form-control block
+                                <input type="text" v-model="form.answering1" class="form-control block
                             w-full
                             px-3
                             py-1.5
@@ -43,10 +45,11 @@
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7" placeholder="回答1行目">
-                                <div v-if="form.errors.answer1">{{ form.errors.answer1 }}</div>
+                                <div v-if="form.errors.answering1">{{ form.errors.answering1 }}</div>
                             </div>
-                            <div>
-                                <input type="text" v-model="form.answer2" class="form-control block
+                            <!-- 2行目 -->
+                            <div class="my-3">
+                                <input type="text" v-model="form.answering2" class="form-control block
                             w-full
                             px-3
                             py-1.5
@@ -59,11 +62,12 @@
                             transition
                             ease-in-out
                             m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7" placeholder="2行目">
-                                <div v-if="form.errors.answer2">{{ form.errors.answer2 }}</div>
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7" placeholder="回答2行目">
+                                <div v-if="form.errors.answering2">{{ form.errors.answering2 }}</div>
                             </div>
-                            <div>
-                                <input type="text" v-model="form.answer3" class="form-control block
+                            <!-- 回答3行目 -->
+                            <div class="my-3">
+                                <input type="text" v-model="form.answering3" class="form-control block
                             w-full
                             px-3
                             py-1.5
@@ -76,8 +80,8 @@
                             transition
                             ease-in-out
                             m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7" placeholder="3行目">
-                                <div v-if="form.errors.answer3">{{ form.errors.answer3 }}</div>
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7" placeholder="回答3行目">
+                                <div v-if="form.errors.answering3">{{ form.errors.answering3 }}</div>
                             </div>
                         </div>
                         <button type="submit" :disabled="form.processing" class="
@@ -112,8 +116,9 @@ import Navbar from '@/components/Navbar.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 
 const form = useForm({
-    title: '',
-    content: '',
+    answering1: '',
+    answering2: '',
+    answering3: '',
 });
 
 const props = defineProps({

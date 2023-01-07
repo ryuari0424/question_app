@@ -2,7 +2,7 @@
     <Navbar />
 
     <span class="font-medium">
-        {{ $page.props }}
+        {{ $page.props.flash.message }}
     </span>
     <div class="card grid grid-cols-6 gap-4" v-for="question in props.questions">
         <div class="col-start-2 col-span-4 m-4">
