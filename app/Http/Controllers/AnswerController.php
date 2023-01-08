@@ -17,6 +17,11 @@ class AnswerController extends Controller
         return Inertia::render('Answer/Create', ['question' => $question]);
     }
 
+    public function showAnswer(Question $question)
+    {
+        return Inertia::render('Question/Show', ['question' => $question]);
+    }
+
 
     public function storeAnswer(Request $request, Question $question)
     {

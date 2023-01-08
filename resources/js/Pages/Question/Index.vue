@@ -25,10 +25,26 @@
                         <p class="text-gray-600">投稿日:Aug 18</p>
                     </div>
                 </div>
-                <Link :href="route('user.createAnswer', question.id)" >
-                    <button  class="mt-3 inline-block px-3 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg
+                <div class="flex">
+                    <Link :href="route('user.createAnswer', question.id)">
+                    <button class="mr-3 mt-3 inline-block px-3 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg
                     focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">質問に回答する</button>
-                </Link>
+                    </Link>
+                    <!-- 回答確認 -->
+                    <Link :href="route('user.showAnswer', question.id)">
+                    <div>
+                    <span><svg class="h-6 w-6 text-yellow-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="12" cy="12" r="9" />
+                        <line x1="9" y1="10" x2="9.01" y2="10" />
+                        <line x1="15" y1="10" x2="15.01" y2="10" />
+                        <path d="M9.5 15a3.5 3.5 0 0 0 5 0" />
+                    </svg></span>{{ question.answers.length }}
+                    </div>
+                    <button class="mt-3 inline-block px-3 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg
+                    focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">回答を確認する</button>
+                    </Link>
+                </div>
                 <div class="flex justify-between">
                     <!-- 投稿削除ボタン -->
                     <button v-if="role == 'admin'" class="inline-block px-3 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out">投稿削除</button>
@@ -37,7 +53,7 @@
             </div>
         </div>
     </div>
-    <p>{{$page.props.auth.user.role}}</p>
+    <p>{{ $page.props.auth.user.role }}</p>
 
 
 </template>
@@ -59,6 +75,7 @@ const props = defineProps({
 });
 
 const role = props.user.role;
+
 
 
 

@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::controller(AnswerController::class)->group(function () {
         Route::get('/question/answer/{question}', 'createAnswer')->name('createAnswer');
+        Route::get('/question/answer/show/{question}', 'showAnswer')->name('showAnswer');
         Route::post('/question/answer/{question}', 'storeAnswer')->name('storeAnswer');
     });
 });

@@ -32,10 +32,6 @@ class QuestionController extends Controller
 
     }
 
-    public function showQuestion(Question $question) {
-        
-
-    }
 
     public function deleteQuestion(Request $request, User $user)
     {
