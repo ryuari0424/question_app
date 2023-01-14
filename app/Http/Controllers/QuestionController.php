@@ -29,11 +29,33 @@ class QuestionController extends Controller
                     ]);
 
         return redirect()->route('user.index')->with('message', '質問の投稿が完了しました。');
+    }
+
+    public function editQuestion(Question $question) {
+        return Inertia::render('Question/Edit',["question"=>$question]);
 
     }
 
+    public function updateQuestion(Request $request, Question $question) {
+        $request->validate([
+            'title' => ['required', 'min:4'],
+            'content' => ['required', 'min:4'],
+        ]);
 
-    public function deleteQuestion(Request $request, User $user)
+        $question->update($request->all());
+
+        return redirect()->route('user.index')->with("message", "質問を修正しました。" );
+    }
+
+    public function destroyQuestion(Request $request, Question $question)
     {
+        dd($question);
+        if(Auth::user()->id != $question->user_id){
+            return back();
+        }else{
+            $question->delete();
+            return redirect()->route('user.index')->with('message', '質問が削除されました。');
+        }
+
     }
 }

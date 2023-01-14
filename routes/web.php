@@ -60,7 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::controller(QuestionController::class)->group(function () {
         Route::get('/question/create', 'createQuestion')->name('createQuestion');
+        Route::get('/question/edit/{question}', 'editQuestion')->name('editQuestion');
         Route::post('/question/post', 'storeQuestion')->name('storeQuestion');
+        Route::delete('/question/delete/{question}', 'destroyQuestion')->name('destroyQuestion');
+        Route::put('/question/edit/{question}', 'updateQuestion')->name('updateQuestion');
     });
 
     Route::controller(AnswerController::class)->group(function () {

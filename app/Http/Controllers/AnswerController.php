@@ -17,9 +17,11 @@ class AnswerController extends Controller
         return Inertia::render('Answer/Create', ['question' => $question]);
     }
 
-    public function showAnswer(Question $question)
+    public function showAnswer(Question $question, User $user)
     {
-        return Inertia::render('Question/Show', ['question' => $question]);
+        $question = Question::with('answers')->with('user')->find($question->id);
+        // dd($question->answers());
+        return Inertia::render('Question/Show', ['question' => $question, 'user' => $user]);
     }
 
 
