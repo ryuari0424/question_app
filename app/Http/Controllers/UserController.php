@@ -17,8 +17,8 @@ class UserController extends Controller
 
     public function myPage(){
 
-        $questions = Question::with('user')->latest()->get();
-        
+        $questions = Question::with('user')->with('answers')->latest()->get();
+
         return Inertia::render('User/MyPage', ['questions' => $questions]);
 
     }
