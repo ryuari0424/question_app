@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::middleware(['auth','checkRole:user'])->prefix('user')->name('user.')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/question', [UserController::class, 'index'])->name('index');
+        Route::get('/mypage', [UserController::class, 'mypage'])->name('myPage');
+
     });
 
     Route::controller(QuestionController::class)->group(function () {

@@ -1,6 +1,4 @@
 <template>
-{{ question.answers }}
-{{ $page.props.auth.user.id   }}
     <Navbar />
     <div class="card grid grid-cols-6 gap-4">
         <div class="col-start-2 col-span-4 mx-4 my-2">
@@ -30,7 +28,7 @@
 
 <!-- 回答カード -->
     <div class="grid grid-cols-6 gap-4">
-        <h1 v-if="question.answers != '' " class="p-4 text-xl font-bold bg-white col-start-2 shadow-md col-span-4 mx-4">回答({{ question.answers.length() }})</h1>
+        <h1 v-if="question.answers != '' " class="p-4 text-xl font-bold bg-white col-start-2 shadow-md col-span-4 mx-4">回答({{ question.answers.length }})</h1>
         <h1 v-else class="p-4 text-xl font-bold bg-white col-start-2 shadow-md col-span-4 mx-4">回答はまだありません。</h1>
 
     </div>

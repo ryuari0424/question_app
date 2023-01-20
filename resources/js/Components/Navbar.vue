@@ -17,12 +17,12 @@
                         </NavLink>
                     </li>
                     <li class="nav-item">
-                        <NavLink class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white" :href="route('user.createQuestion')">
+                        <NavLink class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white" :href="route('user.myPage')">
                             マイページ
                         </NavLink>
                     </li>
                     <li class="nav-item">
-                        <NavLink class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white" :href="route('user.createQuestion')">
+                        <NavLink class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white" :href="route('user.myPage')">
                             abc
                         </NavLink>
                     </li>

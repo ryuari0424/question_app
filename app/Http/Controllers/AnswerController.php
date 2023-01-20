@@ -20,7 +20,6 @@ class AnswerController extends Controller
     public function showAnswer(Question $question, User $user)
     {
         $question = Question::with('answers')->with('user')->find($question->id);
-        // dd($question->answers());
         return Inertia::render('Question/Show', ['question' => $question, 'user' => $user]);
     }
 
