@@ -49,7 +49,6 @@ class QuestionController extends Controller
 
     public function destroyQuestion(Request $request, Question $question)
     {
-        dd($question);
         if(Auth::user()->id != $question->user_id){
             return back();
         }else{

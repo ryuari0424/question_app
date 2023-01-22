@@ -30,27 +30,23 @@
                     <div class="text-sm">
                         <p class="text-gray-900 leading-none">{{ question.user.name }}</p>
                         <p class="text-gray-600">投稿日:{{ dayjs(question.created_at).fromNow() }}</p>
-
                     </div>
                 </div>
                 <div class="flex">
                     <Link :href="route('user.createAnswer', question.id)">
-                    <button v-if="question.user_id != $page.props.auth.user.id" class="mr-5 mt-3 inline-block px-3 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg
+                    <button v-if="question.user_id != $page.props.auth.user.id" class="mr-5 mt-2 inline-block px-3 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg
                     focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">質問に回答する</button>
                     </Link>
 
                     <Link :href="route('user.showAnswer', question.id)">
                     <div class="">
-                        <button class="flex items-center mt-3 inline-block px-3 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg
+                        <button class="flex items-center mt-3 inline-block font-medium text-md leading-tight uppercase
                     focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out">
-                            <svg class="h-6 w-6 text-yellow-500" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <circle cx="12" cy="12" r="9" />
-                                <line x1="9" y1="10" x2="9.01" y2="10" />
-                                <line x1="15" y1="10" x2="15.01" y2="10" />
-                                <path d="M9.5 15a3.5 3.5 0 0 0 5 0" />
-                            </svg>{{ question.answers.length }}
-                            個の回答を確認する</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -5 32 32" fill="currentColor" class="text-blue-300 w-7 h-7">
+                                <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97z" clip-rule="evenodd" />
+                            </svg>
+                            {{ question.answers.length }}
+                            </button>
                     </div>
                     </Link>
                 </div>
