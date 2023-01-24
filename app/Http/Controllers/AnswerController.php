@@ -27,9 +27,9 @@ class AnswerController extends Controller
     public function storeAnswer(Request $request, Question $question)
     {
         $request->validate([
-            'answering1' => 'required|min:4|max:100',
-            'answering2' => 'required_without:answering1|min:4|max:100',
-            'answering3' => 'required_without:answering1|min:4|max:100',
+            'answering1' => 'required|min:4|max:50',
+            'answering2' => 'max:50',
+            'answering3' => 'max:50',
         ]);
 
         $answer = Answer::create([

@@ -27,13 +27,16 @@
                             {{ question.answers.length }}
                         </span>
                     </div>
+                    <div>
+
                     <Link>
-                        <button>投稿内容編集</button>
+                        <button class="inline-block mr-2 px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-r-green-800 active:shadow-lg transition duration-150 ease-in-out">投稿内容編集</button>
                     </Link>
                         <button @click="destroy(question.id)" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
                             削除
                         </button>
                 </div>
+                    </div>
             </div>
         </div>
     </div>

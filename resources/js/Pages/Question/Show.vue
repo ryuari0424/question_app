@@ -37,7 +37,9 @@
             <div class="border-gray-400 lg:border-gray-400 bg-white p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
                     <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering1 }}</div>
-                    <p class="text-gray-700 text-base">unchi</p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering2 }}</div>
+                    <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering3 }}</div>
+                    
                 </div>
                 <div class="flex items-center">
                     <div class="text-sm">
