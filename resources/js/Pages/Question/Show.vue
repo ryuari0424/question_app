@@ -39,12 +39,12 @@
                     <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering1 }}</div>
                     <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering2 }}</div>
                     <div class="text-gray-900 font-bold text-xl mb-2">{{ answer.answering3 }}</div>
-                    
+
                 </div>
                 <div class="flex items-center">
                     <div class="text-sm">
                         <p class="text-gray-900 leading-none">{{ question.user.name }}</p>
-                        <p class="text-gray-600">投稿日:{{ question.created_at }}</p>
+                        <p class="text-gray-600">回答日:{{ dayjs(question.created_at).fromNow() }}</p>
                     </div>
                 </div>
             </div>
