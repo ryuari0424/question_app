@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -16,8 +17,8 @@ class UserController extends Controller
     }
 
     public function myPage(){
-
-        $questions = Question::with('user')->with('answers')->latest()->get();
+        $user = Auth::user();
+        $questions = Question::with('user')->with('answers')->where('user_id', $user->id)->get();
 
         return Inertia::render('User/MyPage', ['questions' => $questions]);
 

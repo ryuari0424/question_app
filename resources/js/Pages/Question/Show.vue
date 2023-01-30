@@ -32,7 +32,7 @@
         <h1 v-else class="p-4 text-xl font-bold bg-white col-start-2 shadow-md col-span-4 mx-4">回答はまだありません。</h1>
 
     </div>
-    <div v-for="answer in props.question.answers" class=" card grid grid-cols-6 gap-4">
+    <div v-for="answer in answers" class=" card grid grid-cols-6 gap-4">
         <div class="col-start-2 shadow-md border-b-2 col-span-4 mx-4">
             <div class="border-gray-400 lg:border-gray-400 bg-white p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
@@ -43,8 +43,8 @@
                 </div>
                 <div class="flex items-center">
                     <div class="text-sm">
-                        <p class="text-gray-900 leading-none">{{ question.user.name }}</p>
-                        <p class="text-gray-600">回答日:{{ dayjs(question.created_at).fromNow() }}</p>
+                        <p class="text-gray-900 leading-none">{{ answer.user.name }}</p>
+                        <p class="text-gray-600">回答日:{{ dayjs(answer.created_at).fromNow() }}</p>
                     </div>
                 </div>
             </div>
@@ -69,6 +69,9 @@ const props = defineProps({
         type: Object
     },
     question: {
+        type: Object
+    },
+    answers: {
         type: Object
     }
 });
