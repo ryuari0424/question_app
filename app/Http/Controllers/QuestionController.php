@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Question;
@@ -12,7 +13,8 @@ class QuestionController extends Controller
 {
     public function createQuestion(User $user)
     {
-        return Inertia::render('Question/Create');
+        $tags = Tag::all();
+        return Inertia::render('Question/Create', ['tags' => $tags]);
     }
 
     public function storeQuestion(Request $request)
@@ -22,11 +24,17 @@ class QuestionController extends Controller
             'content' => ['required', 'min:4'],
         ]);
 
+
         $question = Question::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => Auth::user()->id,
                     ]);
+
+        if ($request->has('tag')) {
+            $question->tags()->attach($request->tag);
+        }
+
 
         return redirect()->route('user.index')->with('message', '質問の投稿が完了しました。');
     }
@@ -40,6 +48,7 @@ class QuestionController extends Controller
         $request->validate([
             'title' => ['required', 'min:4'],
             'content' => ['required', 'min:4'],
+            ''
         ]);
 
         $question->update($request->all());

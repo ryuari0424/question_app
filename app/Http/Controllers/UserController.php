@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        $questions = Question::with('user')->with('answers')->latest()->get();
+        $questions = Question::with('tags')->with('user')->with('answers')->latest()->get();
         return Inertia::render('Question/Index', ['user' => $user, 'questions' => $questions]);
     }
 

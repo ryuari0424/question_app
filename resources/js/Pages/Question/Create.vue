@@ -38,8 +38,27 @@
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       " id="question_content" rows="3" placeholder="content"></textarea>
+
+
+
+
     <div v-if="form.errors.content">{{ form.errors.content }}</div>
             </div>
+
+    <div class="">
+        <label class="block">
+            <span class="text-gray-700">Tag</span>
+            <select v-model="form.tag" class="block mt-1">
+
+                <option v-bind:value="tag.id" v-for="tag in tags">{{ tag.name }}</option>
+
+            </select>
+            <div v-if="form.errors.tag">{{ form.errors.tag }}</div>
+        </label>
+    </div>
+    <p>{{ form  }}</p>
+    <p>{{ props.tags  }}</p>
+
             <button type="submit" :disabled="form.processing" class="
       px-6
       py-2.5
@@ -66,8 +85,16 @@
 import Navbar from '@/components/Navbar.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 
+const props = defineProps({
+    tags: {
+        type: Object
+    },
+});
+
 const form = useForm({
     title: '',
     content: '',
+    tag: '',
+
 })
 </script>
