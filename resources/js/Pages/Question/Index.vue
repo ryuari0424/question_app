@@ -17,7 +17,7 @@
             </div>
             <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
-                
+
                     <div class="text-gray-900 font-bold text-xl mb-2">{{ question.title }}</div>
                     <p class="text-gray-700 text-base">{{ question.content }}</p>
                 </div>
@@ -42,6 +42,7 @@
                             </svg>
                             {{ question.answers.length }}
                             </button>
+                            
                     </div>
                     </Link>
                 </div>
@@ -74,6 +75,12 @@ const props = defineProps({
         type: Object
     },
     questions: {
+        type: Object
+    },
+    answers: {
+        type: Object
+    },
+    tags: {
         type: Object
     }
 });

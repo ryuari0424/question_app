@@ -25,7 +25,9 @@
                         <span class="text-gray-600">
                             {{ question.answers.length }}
                         </span>
+                        <span v-for="tag in question.tags">{{ tag.name }}</span>
                     </div>
+
                     <div class="flex">
                         <Link :href="route('user.editQuestion', question.id)">
                         <button class="inline-block mr-2 px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-r-green-800 active:shadow-lg transition duration-150 ease-in-out">投稿内容編集</button>
@@ -38,6 +40,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 
@@ -53,6 +56,9 @@ dayjs.extend(relativeTime);
 
 const props = defineProps({
     questions: {
+        type: Object
+    },
+    tags: {
         type: Object
     },
 });
