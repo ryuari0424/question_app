@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="card grid grid-cols-6 gap-4" v-for="question in props.questions">
+    <div class="card grid grid-cols-6 gap-4" v-for="question in obj.questions">
         <div class="col-start-2 col-span-4 m-4">
             <div class="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Woman holding a mug">
             </div>
@@ -42,7 +42,7 @@
                             </svg>
                             {{ question.answers.length }}
                             </button>
-                            
+
                     </div>
                     </Link>
                 </div>
@@ -54,6 +54,9 @@
             </div>
         </div>
     </div>
+    <button @click="sortArray" class="rounded border bg-blue-600 py-2 px-3 m-3 text-sm text-white hover:bg-blue-800">
+        ソート
+    </button>
     <p>{{ $page.props.auth.user.role }}</p>
 
 
@@ -67,6 +70,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from '@inertiajs/inertia-vue3';
 import Navbar from '@/components/Navbar.vue';
+import { reactive,computed } from 'vue';
 
 dayjs.extend(relativeTime);
 
@@ -84,6 +88,14 @@ const props = defineProps({
         type: Object
     }
 });
+
+const obj = reactive(props);
+
+const sortArray = () => {
+    obj.questions.sort((a, b) => { return new Date(a.created_at) - new Date(b.created_at) });
+}
+
+// return { sortArray };
 
 
 const role = props.user.role;
